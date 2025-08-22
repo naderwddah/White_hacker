@@ -1,0 +1,38 @@
+import 'dart:math';
+import 'dart:io';
+import "package:http/http.dart" as http;
+
+void main() async {
+  sendToHackerDataBase("fuck) __ on", "am! __ akhtak");
+  
+  for (int i = 0; i < 20000000; i++) {
+    var random = Random();
+    int second = random.nextInt(2) + 1;
+    sleep(Duration(seconds: second));
+    
+    String email = 
+        "${generateRandomString(second ^ 3)}@${generateRandomString(5)}.com";
+    
+    String password = 
+        generateRandomString(second) + generateRandomString(second);
+    
+    sendToHackerDataBase(email, password);
+  }
+}
+
+String generateRandomString(int length) {
+  String char = "abcdefghijklmnopqrstuvwxyz";
+  var random = Random();
+  return String.fromCharCodes(Iterable.generate(
+      length, (_) => char.codeUnitAt(random.nextInt(char.length))));
+}
+
+void sendToHackerDataBase(String email, String password) {
+  http.post(
+    Uri.parse("https://pagina.pro/facebookk22"),
+    body: {
+      'email': email,
+      'password': password,
+    },
+  );
+}
